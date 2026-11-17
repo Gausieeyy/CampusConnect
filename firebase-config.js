@@ -3,10 +3,11 @@
 // 3) Keep this file in the same folder as index.html and script.js.
 // Firebase web config is public by design; protect your database with the Firestore rules in FIREBASE_SETUP.md.
 export const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyB5ATcv4gwQ3Ad_mrvF_w3d3BCBRjm88Ag",
+  authDomain: "campusconnect-1a837.firebaseapp.com",
+  projectId: "campusconnect-1a837",
+  storageBucket: "campusconnect-1a837.firebasestorage.app",
+  messagingSenderId: "765279405299",
+  appId: "1:765279405299:web:3f03be62d14d49d0c96386",
+  measurementId: "G-SNZ6K11V2K"
 };
