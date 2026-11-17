@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14213d">
+  <title>CampusConnect — Lost & Found</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CampusConnect home" data-page="home">
+      <span class="brand-mark">CC</span>
+      <span><strong>CampusConnect</strong><small>Campus Lost & Found</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="browse">Browse items</button>
+      <button class="nav-link" data-page="report">Report an item</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="page-home" class="page">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">A smarter campus community</span>
+          <h1>Lost something?<br><em>Let’s find it.</em></h1>
+          <p>One simple place for students to report lost belongings, share found items and help things get back to their owners.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-page="report">＋ Report an item</button>
+            <button class="btn btn-light" data-page="browse">Explore listings →</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="hero-icon">⌕</div>
+          <span class="float-card card-book">📘 <b>Notebook</b></span>
+          <span class="float-card card-keys">🔑 <b>Keys</b></span>
+          <span class="float-card card-bottle">🥤 <b>Water bottle</b></span>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="Listing statistics">
+        <article class="stat-card"><span class="stat-icon blue">⌕</span><div><small>Active reports</small><strong id="stat-active">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon orange">↗</span><div><small>Lost items</small><strong id="stat-lost">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><div><small>Items recovered</small><strong id="stat-recovered">0</strong></div></article>
+      </div>
+
+      <div class="section-heading">
+        <div><span class="eyebrow">A little help goes a long way</span><h2>Recently reported</h2></div>
+        <button class="text-button" data-page="browse">View all listings →</button>
+      </div>
+      <div id="recent-listings" class="listing-grid"></div>
+
+      <section class="how-section">
+        <div class="section-heading"><div><span class="eyebrow">Simple by design</span><h2>How it works</h2></div></div>
+        <div class="steps">
+          <article><span>01</span><h3>Report</h3><p>Share a few details about an item you lost or found on campus.</p></article>
+          <article><span>02</span><h3>Search</h3><p>Browse listings and filter by category or search by a keyword.</p></article>
+          <article><span>03</span><h3>Reconnect</h3><p>Use the listing details to follow your campus’s safe handover process.</p></article>
+        </div>
+      </section>
+    </section>
+
+    <section id="page-browse" class="page" hidden>
+      <div class="page-intro"><span class="eyebrow">The community noticeboard</span><h1>Browse listings</h1><p>Search active lost and found reports from the campus community.</p><p id="connection-status" class="connection-status" role="status">Starting CampusConnect…</p></div>
+      <div class="toolbar">
+        <label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Search item, description or location…" aria-label="Search listings"></label>
+        <select id="category-filter" aria-label="Filter by category">
+          <option value="">All categories</option><option>Electronics</option><option>Documents</option><option>Books & stationery</option><option>Accessories</option><option>Clothing</option><option>Other</option>
+        </select>
+      </div>
+      <div class="tabs" role="group" aria-label="Listing type">
+        <button class="tab active" data-filter="all">All items</button>
+        <button class="tab" data-filter="lost">Lost</button>
+        <button class="tab" data-filter="found">Found</button>
+      </div>
+      <p id="results-count" class="results-count" aria-live="polite"></p>
+      <div id="all-listings" class="listing-grid"></div>
+    </section>
+
+    <section id="page-report" class="page" hidden>
+      <div class="page-intro"><span class="eyebrow">Help your campus community</span><h1>Report an item</h1><p>Provide clear details so the right person can recognise the item.</p></div>
+      <div class="form-layout">
+        <form id="report-form" class="report-form">
+          <div class="form-row">
+            <label>What are you reporting?
+              <select id="report-type" required><option value="lost">I lost an item</option><option value="found">I found an item</option></select>
+            </label>
+            <label>Category
+              <select id="report-category" required>
+                <option>Electronics</option><option>Documents</option><option>Books & stationery</option><option>Accessories</option><option>Clothing</option><option>Other</option>
+              </select>
+            </label>
+          </div>
+          <label>Item name<input id="item-name" maxlength="60" placeholder="e.g. Blue geometry box" required></label>
+          <div class="form-row">
+            <label>Campus location<input id="item-location" maxlength="80" placeholder="e.g. Library, second floor" required></label>
+            <label>Date<input id="item-date" type="date" required></label>
+          </div>
+          <label>Description<textarea id="item-description" rows="4" maxlength="400" placeholder="Colour, brand, distinctive marks or other useful details…" required></textarea></label>
+          <label>WhatsApp number (optional)<input id="item-whatsapp" type="tel" inputmode="numeric" maxlength="18" placeholder="e.g. 919876543210"><small>Include country code. A 10-digit Indian mobile number is also accepted. It is shown only when someone opens this listing.</small></label>
+          <label class="upload-label">Optional photo <input id="item-photo" type="file" accept="image/*"><small>For this demo, images are previewed locally and are not uploaded to a server.</small></label>
+          <div id="photo-preview" class="photo-preview" hidden></div>
+          <div class="privacy-note"><strong>Privacy tip:</strong> Add a WhatsApp number only if you are comfortable being contacted. Don’t include phone numbers, home addresses or student ID numbers in the public description.</div>
+          <button class="btn btn-primary submit-btn" type="submit">Submit report <span>→</span></button>
+          <p id="form-message" class="form-message" role="status"></p>
+        </form>
+        <aside class="side-note"><div class="side-icon">✦</div><h3>A helpful report makes a difference.</h3><p>Use a specific item name and mention where and when it was last seen or found.</p><hr><h4>What happens next?</h4><ol><li>Your report is saved online and appears for everyone using CampusConnect.</li><li>Other users can search for matching details.</li><li>Arrange any handover through an appropriate campus office or supervised public location.</li></ol></aside>
+      </div>
+    </section>
+
+    <section id="page-detail" class="page" hidden>
+      <button class="back-button" data-page="browse">← Back to listings</button>
+      <div id="detail-content"></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-inner"><div class="brand footer-brand"><span class="brand-mark">CC</span><span><strong>CampusConnect</strong><small>Lost & Found Portal</small></span></div><p>A student-focused Design Studio prototype.</p><small>Student prototype · Shared listings use Firebase.</small></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
