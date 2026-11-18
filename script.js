@@ -49,10 +49,19 @@ function navigate(page){
   if(page === "browse") renderBrowse();
   window.scrollTo({top:0,behavior:"smooth"});
 }
+function countUp(el, to){
+  const from = +el.textContent || 0; if (from === to) return;
+  const t0 = performance.now();
+  (function tick(t){
+    const p = Math.min((t - t0) / 900, 1);
+    el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
 function renderStats(){
-  $("stat-active").textContent = activeItems().length;
-  $("stat-lost").textContent = activeItems().filter(x => x.type === "lost").length;
-  $("stat-recovered").textContent = listings.filter(x => x.recovered).length;
+  countUp($("stat-active"), activeItems().length);
+  countUp($("stat-lost"), activeItems().filter(x => x.type === "lost").length);
+  countUp($("stat-recovered"), listings.filter(x => x.recovered).length);
 }
 function cardTemplate(item){
   const image = item.photo ? `<img class="item-photo" src="${item.photo}" alt="Photo of ${escapeHTML(item.name)}">` : `<div class="item-emoji" aria-hidden="true">${iconFor(item.category)}</div>`;
