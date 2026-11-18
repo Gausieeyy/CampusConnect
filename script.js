@@ -231,3 +231,36 @@ $("item-photo").addEventListener("change",e=>handlePhoto(e.target.files[0]));
 $("item-date").value = new Date().toISOString().slice(0,10);
 renderHome();
 boot();
+
+/* CampusConnect light/dark theme */
+
+function applyCampusTheme(theme) {
+  const selected = theme === "dark" ? "dark" : "light";
+
+  document.documentElement.dataset.theme = selected;
+
+  const icon = $("theme-icon");
+  const button = $("theme-toggle");
+
+  if (icon) {
+    icon.textContent = selected === "dark" ? "☀" : "☾";
+  }
+
+  if (button) {
+    button.setAttribute(
+      "aria-label",
+      selected === "dark"
+        ? "Switch to light mode"
+        : "Switch to dark mode"
+    );
+  }
+
+  localStorage.setItem("cc-theme", selected);
+}
+
+applyCampusTheme(localStorage.getItem("cc-theme") || "light");
+
+$("theme-toggle")?.addEventListener("click", () => {
+  const current = document.documentElement.dataset.theme;
+  applyCampusTheme(current === "dark" ? "light" : "dark");
+});
