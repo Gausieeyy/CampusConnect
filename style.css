@@ -614,3 +614,27 @@ body[data-theme="dark"] .section-heading h2 {
     transition-duration: .01ms !important;
   }
 }
+
+/* CAMPUSCONNECT VISUAL TEST */
+body {
+  background: #e9eaff !important;
+}
+
+.hero {
+  background: linear-gradient(135deg, #11152e, #5546dc) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 20px 50px rgba(50,40,150,.25) !important;
+}
+
+.listing-card {
+  border-radius: 22px !important;
+  box-shadow: 0 15px 35px rgba(40,40,100,.15) !important;
+}
+
+button {
+  transition: all .3s ease !important;
+}
+
+button:hover {
+  transform: translateY(-3px) !important;
+}
